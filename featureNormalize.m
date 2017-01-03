@@ -26,14 +26,16 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %
 
-mu = mean(X); % mu will keep the mean of every feature
-sigma = std(X); % sigma is the standard deviation value of the feature
-index =  (1:size(X,2));  % creating a index of number of column headers
+mu = mean(X) % mu will keep the mean of every feature
+sigma = std(X) % sigma is the standard deviation value of the feature (most data points will lie within
+% 2 standard deviations of the mean); this is an alternative to taking the range
+% of values (max-min)
+index =  1:size(X,2);  % creating a index of number of column headers
 
 %loop to normalize all elements in the array
-for index = index,
-  Xmu = X(:,index) - mu(index);
-  Xnorm(:,index) = Xmu / sigma(index);
+for i = index,
+  Xmu = X(:,i) - mu(i);
+  X_norm(:,i) = Xmu / sigma(i);
 end
 % end of normalization loop
 
